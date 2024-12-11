@@ -1,32 +1,25 @@
 
 var menuLinks = [
-    { text: "about", href: "/about" },
+    { text: "home", href: "/home" },
     {
-      text: "catalog",
+      text: "faq",
       href: "#",
       subLinks: [
-        { text: "all", href: "/catalog/all" },
-        { text: "top selling", href: "/catalog/top" },
-        { text: "search", href: "/catalog/search" },
+        { text: "Is santa really real?", href: "/faq/santa-real" },
+        { text: "How does this work?", href: "/faq/how-it-works"},
+        { text: "Is this a scam?", href: "/faq/scam" },
       ],
     },
     {
-      text: "orders",
+      text: "contact us",
       href: "#",
       subLinks: [
-        { text: "new", href: "/orders/new" },
-        { text: "pending", href: "/orders/pending" },
-        { text: "history", href: "/orders/history" },
+        { text: "new inquiries", href: "/contact/new" },
+        { text: "pending", href: "/contact/pending" },
+        { text: "history", href: "/contact/history" },
       ],
     },
-    {
-      text: "account",
-      href: "#",
-      subLinks: [
-        { text: "profile", href: "/account/profile" },
-        { text: "sign out", href: "/account/signout" },
-      ],
-    },
+    
   ];
 
 
@@ -40,6 +33,8 @@ const navEl = document.getElementById('menu');
 navEl.style.height = '50px';
 navEl.style.backgroundColor = '#290202';
 navEl.style.margin = '0'
+navEl.classList = "flex-around";
+navEl.style.position = 'relative';
 
 
 menuLinks.forEach(function (link) {
@@ -48,6 +43,62 @@ menuLinks.forEach(function (link) {
     newEl.textContent = link.text;
     navEl.appendChild(newEl);
   });
+
+  const subMenuEl = document.getElementById("sub-menu");
+  subMenuEl.style.height = "50px";
+
+  subMenuEl.style.backgroundColor = "red";
+  subMenuEl.classList = "flex-around";
+  
+  subMenuEl.style.position = "absolute";
+  subMenuEl.style.top = "0";
+
+  const topMenuLinks = document.querySelectorAll("a");
+  navEl.addEventListener("click", function (event) {
+    event.preventDefault();
+    if (event.target.tagName !== "A") {
+      return;
+    }
+    console.log(event.target.textContent);
+  
+    topMenuLinks.forEach((link) => link.classList.remove("active"));
+    event.target.classList.add("active");
+  
+    const clickedLink = menuLinks.find(
+      (link) => link.text.toLowerCase() === event.target.textContent.toLowerCase()
+    );
+  
+    if (clickedLink && clickedLink.subLinks) {
+      subMenuEl.style.top = "100%";
+      buildSubmenu(clickedLink.subLinks);
+    } else {
+      subMenuEl.style.top = "0";
+    }
+  });
+
+  function buildSubmenu(subLinks) {
+    subMenuEl.innerHTML = "";
+    subLinks.forEach((link) => {
+      const subLinkEl = document.createElement("a");
+      subLinkEl.setAttribute("href", link.href);
+      subLinkEl.textContent = link.text;
+      subMenuEl.appendChild(subLinkEl);
+    });
+  }
+
+
+  subMenuEl.addEventListener("click", function (event) {
+    event.preventDefault();
+    if (event.target.tagName !== "A") {
+      return;
+    }
+    console.log(event.target.textContent);
+    subMenuEl.style.top = "0";
+    topMenuLinks.forEach((link) => link.classList.remove("active"));
+  
+    navElEl.innerHTML = `<h1>${event.target.textContent}</h1>`;
+  });
+  
 
 
   const img = document.createElement('img');
@@ -64,15 +115,12 @@ menuLinks.forEach(function (link) {
 
 const introEl = document.getElementById('intro');
 introEl.textContent = 'Welcome to Santa\'s Letterbox';
+introEl.classList = 'right-column'
 
 const subEl = document.getElementById('sub-head');
 subEl.textContent = 'Send Your Wishes to the North Pole!';
+subEl.classList = 'right-column'
 
 
 
 
-// const mainEl = document.querySelector("main");
-// mainEl.style.backgroundColor = "var(--main-bg)";
-// mainEl.innerHTML = "<h1>Welcome to Santa's Letterbox</h1>";
-
-// const menuEl = document.querySelector("menu");
