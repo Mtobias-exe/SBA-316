@@ -49,6 +49,13 @@ menuLinks.forEach(function (link) {
     navEl.appendChild(newEl);
   });
 
+
+  const img = document.createElement('img');
+  img.src = "https://usagif.com/wp-content/uploads/2021/4fh5wi/santa-claus-69.gif";
+  const src = document.querySelector('div');
+  src.appendChild(img)
+
+
 const introEl = document.getElementById('intro');
 introEl.textContent = 'Welcome to Santa\'s Letterbox';
 
