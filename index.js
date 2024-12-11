@@ -54,6 +54,12 @@ menuLinks.forEach(function (link) {
   img.src = "https://usagif.com/wp-content/uploads/2021/4fh5wi/santa-claus-69.gif";
   const src = document.querySelector('div');
   src.appendChild(img)
+  img.style.borderRadius = '50%';
+  img.style.objectFit = 'cover';
+  img.style.width = '700px'
+  img.style.height = '700px'
+
+  
 
 
 const introEl = document.getElementById('intro');
