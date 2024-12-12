@@ -149,6 +149,9 @@ function init() {
   ruleList.appendChild(df); 
 }
 
+function submitForm(){
+  alert('Thank you for submitting your form! Santa will read it in 5 to 7 business days')
+}
 
 
 
