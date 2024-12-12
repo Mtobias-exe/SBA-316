@@ -101,20 +101,17 @@ menuLinks.forEach(function (link) {
   
 
   
-  const img = document.createElement('img');
-  img.src = "https://usagif.com/wp-content/uploads/2021/4fh5wi/santa-claus-69.gif";
-  const src = document.getElementById('hero-container');
-  src.appendChild(img)
+  // const img = document.createElement('img');
+  // img.src = "https://usagif.com/wp-content/uploads/2021/4fh5wi/santa-claus-69.gif";
+  // const src = document.getElementById('hero-container');
+  // src.appendChild(img)
+  const img = document.querySelector('img')
   img.style.borderRadius = '50%';
   img.style.objectFit = 'cover';
   img.style.width = '700px'
   img.style.height = '700px'
 
   
-  
-  
-
-
   
 
 
