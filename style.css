@@ -46,6 +46,13 @@ nav a {
   margin-left: 10%;
 }
 
+#rules-container{
+  position: relative;
+  left: 62%;
+  width: 20%;
+  bottom: 10%;
+}
+
 .pic{
   margin-left: 10%;
 }
