@@ -128,5 +128,26 @@ mailEl.classList = 'right-column'
 
 
 
+let rules = [
+  "Do not bribe Santa to get yourself or others on the good list",
+  "Do not bribe Santa to get yourself or others on the bad list for coal or any other reason",
+  "Do not make any inappropriate comments or jokes"
+];
+
+document.addEventListener('DOMContentLoaded', init);
+
+function init() {
+  let ruleList = document.getElementById('list-rules');
+  let df = document.createDocumentFragment(); 
+
+  rules.forEach(rule => {
+      let li = document.createElement('li');
+      li.textContent = rule; 
+      df.appendChild(li); 
+  });
+
+  ruleList.appendChild(df); 
+}
+
 
 
